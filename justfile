@@ -2,5 +2,11 @@ set shell := ["nu", "-c"]
 
 default := 'bootstrap'
 
-bootstrap cargo_extra_flags="":
-  nu miri.nu
+bootstrap :
+  nu miri.nu toolchain
+
+build:
+  nu miri.nu build
+
+run +params="tests/pass/hello.rs":
+  nu miri.nu run {{params}}
